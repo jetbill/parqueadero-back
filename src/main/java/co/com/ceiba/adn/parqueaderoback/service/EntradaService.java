@@ -23,19 +23,21 @@ public class EntradaService {
 		this.registroEntradaService = registroEntradaService;
 	}
 	
-	public List<RegistroEntrada> obtenerParqueosActivosPorTipo(TipoVehiculo tipoVehiculo){
+	public List<RegistroEntrada> obtenerParqueosActivos(){
+		return registroEntradaService.obtenerParqueosActivos();
+	}
+	
+	/*public List<RegistroEntrada> obtenerParqueosActivosPorTipo(TipoVehiculo tipoVehiculo){
 		return registroEntradaService.vehiculosRegistradosPorTipo(tipoVehiculo.toString());
 		
 	}
 	
-	public List<RegistroEntrada> obtenerParqueosActivos(){
-		return registroEntradaService.vehiculosRegistrados();
-	}
+	
 	
 	public RegistroEntrada   obtenerEntradaPorId(Long id) {
-		return registroEntradaService.findById(id);
+		return registroEntradaService.buscarPorId(id);
 		
-	}
+	}*/
 	
 	public CondicionParqueo getControlParqueo(Vehiculo vehiculo, LocalDateTime fechaEntrda, RegistroEntradaService registroEntradaService) {
 		if(vehiculo instanceof Carro) {
@@ -53,9 +55,10 @@ public class EntradaService {
 		entrada.setEstadoParqueo(Boolean.TRUE);
 		entrada.setFechaEntrada(fechaEntrda);
 		entrada.setVehiculo(vehiculo);
-		return registroEntradaService.save(entrada);
+		return registroEntradaService.guardarRegistro(entrada);
 		
 		
 	}
 
 }
+ 

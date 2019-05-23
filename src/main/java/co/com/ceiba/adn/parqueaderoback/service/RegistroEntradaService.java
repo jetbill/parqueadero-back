@@ -1,8 +1,10 @@
 package co.com.ceiba.adn.parqueaderoback.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import co.com.ceiba.adn.parqueaderoback.dominio.RegistroEntrada;
+import co.com.ceiba.adn.parqueaderoback.dominio.Vehiculo;
 
 
 
@@ -10,15 +12,17 @@ public interface RegistroEntradaService {
 	
 	Integer numeroDeVehiculosRegistradosPorTipo(String tipoVehiculo);
 	
-	List<RegistroEntrada> vehiculosRegistrados();
+	List<RegistroEntrada> obtenerParqueosActivos();
 	
 	List<RegistroEntrada> vehiculosRegistradosPorTipo(String tipoVehiculo);
 	
-	List<RegistroEntrada> vehiculosRegistradosMatricula(String matricula);
+	List<RegistroEntrada> vehiculosRegistradosPorMatricula(String matricula);
 	
-	RegistroEntrada save(RegistroEntrada registroEntrada);
+	RegistroEntrada guardarRegistro(RegistroEntrada registroEntrada);
 	
-	RegistroEntrada findById(Long id);
+	
+	
+	RegistroEntrada buscarPorId(Long id);
 	
 	
 

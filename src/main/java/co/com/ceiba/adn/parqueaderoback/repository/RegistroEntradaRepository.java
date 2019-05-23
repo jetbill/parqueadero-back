@@ -16,13 +16,13 @@ public interface RegistroEntradaRepository  extends CrudRepository<RegistroEntra
 	Integer numeroDeVehiculosRegistradosPorTipo(String tipoVehiculo);
 	
 	@Query(value="SELECT e FROM entradas e WHERE  e.estadoParqueo = true")
-	List<RegistroEntradaEntity> vehiculosRegistrados();
+	List<RegistroEntradaEntity> obtenerParqueosActivos();
 	
 	@Query(value="SELECT e FROM entradas e WHERE e.tipoVehiculo = ?1 AND e.estadoParqueo = true")
 	List<RegistroEntradaEntity> vehiculosRegistradosPorTipo(String tipoVehiculo);
 	
 	@Query(value="SELECT e FROM entradas e WHERE e.vehiculoEntity.matricula = ?1 AND e.estadoParqueo = true")
-	List<RegistroEntradaEntity> vehiculosRegistradosMatricula(String matricula);
+	List<RegistroEntradaEntity> vehiculosRegistradosPorMatricula(String matricula);
 	
 	
 	

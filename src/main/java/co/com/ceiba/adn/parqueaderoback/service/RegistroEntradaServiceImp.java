@@ -1,5 +1,6 @@
 package co.com.ceiba.adn.parqueaderoback.service;
 
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,14 +19,18 @@ import co.com.ceiba.adn.parqueaderoback.entity.VehiculoEntity;
 import co.com.ceiba.adn.parqueaderoback.repository.RegistroEntradaRepository;
 import co.com.ceiba.adn.parqueaderoback.utilities.ConvertidorDeFecha;
 
+
 @Service
 public class RegistroEntradaServiceImp implements RegistroEntradaService{
+	
 	private RegistroEntradaRepository registroEntradaRepository;
+	
 	
 	
 	@Autowired
 	public RegistroEntradaServiceImp(RegistroEntradaRepository registroEntradaRepository) {
 		this.registroEntradaRepository = registroEntradaRepository;
+		
 	}
 
 	@Override
@@ -34,8 +39,8 @@ public class RegistroEntradaServiceImp implements RegistroEntradaService{
 	}
 
 	@Override
-	public List<RegistroEntrada> vehiculosRegistrados() {
-		List<RegistroEntradaEntity> entradaEntity = registroEntradaRepository.vehiculosRegistrados();
+	public List<RegistroEntrada> obtenerParqueosActivos() {
+		List<RegistroEntradaEntity> entradaEntity = registroEntradaRepository.obtenerParqueosActivos();
 		return entradaEntity.stream()
 				.map(RegistroEntradaBuilder::convertirADominio).collect(Collectors.toList());
 	}
@@ -48,14 +53,14 @@ public class RegistroEntradaServiceImp implements RegistroEntradaService{
 	}
 
 	@Override
-	public List<RegistroEntrada> vehiculosRegistradosMatricula(String matricula) {
-		List<RegistroEntradaEntity> entradaEntity = registroEntradaRepository.vehiculosRegistradosMatricula(matricula);		
+	public List<RegistroEntrada> vehiculosRegistradosPorMatricula(String matricula) {
+		List<RegistroEntradaEntity> entradaEntity = registroEntradaRepository.vehiculosRegistradosPorMatricula(matricula);		
 		return entradaEntity.stream()
 				.map(RegistroEntradaBuilder::convertirADominio).collect(Collectors.toList());
 	}
 
 	@Override
-	public RegistroEntrada save(RegistroEntrada registroEntrada) {
+	public RegistroEntrada guardarRegistro(RegistroEntrada registroEntrada) {
 		VehiculoEntity vehiculoEntity  = obtenerVehiculoEntity(registroEntrada.getVehiculo());
 		RegistroEntradaEntity registroEntradaEntity = new RegistroEntradaEntity();
 		registroEntradaEntity.setEstadoParqueo(Boolean.TRUE);
@@ -67,7 +72,7 @@ public class RegistroEntradaServiceImp implements RegistroEntradaService{
 
 	
 	@Override
-	public RegistroEntrada findById(Long id) {	
+	public RegistroEntrada buscarPorId(Long id) {	
 		RegistroEntradaEntity regEntity= null;
 		if(registroEntradaRepository.findById(id).isPresent()) {
 			regEntity = registroEntradaRepository.findById(id).get();			
@@ -83,5 +88,8 @@ public class RegistroEntradaServiceImp implements RegistroEntradaService{
 		}
 		
 	}
+	
+	
+	
 
 }

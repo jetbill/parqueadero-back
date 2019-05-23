@@ -33,8 +33,8 @@ public class RegistroEntradaEntity implements Serializable{
 	private Boolean estadoParqueo;
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="id_vehiculo")
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	@JoinColumn(name="matricula")
+	//@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private VehiculoEntity vehiculoEntity;
 	
 	@Column(name = "tipo_vehiculo", nullable = false)

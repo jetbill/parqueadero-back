@@ -24,6 +24,7 @@ import co.com.ceiba.adn.parqueaderoback.dominio.Carro;
 import co.com.ceiba.adn.parqueaderoback.dominio.Moto;
 import co.com.ceiba.adn.parqueaderoback.dominio.RegistroEntrada;
 import co.com.ceiba.adn.parqueaderoback.service.EntradaService;
+import co.com.ceiba.adn.parqueaderoback.service.RegistroEntradaService;
 
 
 @RestController
@@ -35,8 +36,8 @@ public class RegistroEntradaController {
 	private EntradaService entradaService;
 
 	@Autowired
-	public RegistroEntradaController(EntradaService EntradaService) {
-		this.entradaService = EntradaService;
+	public RegistroEntradaController(EntradaService entradaService) {
+		this.entradaService = entradaService;
 	}
 	
 	@GetMapping("/listar")

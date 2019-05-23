@@ -51,7 +51,7 @@ public class SalidaService {
 	
 	@Transactional
 	public RegistroSalida generarSalida(String matricula,LocalDateTime fechaSalida) {
-		List<RegistroEntrada>  registroEntradas = registroEntradaService.vehiculosRegistradosMatricula(matricula);
+		List<RegistroEntrada>  registroEntradas = registroEntradaService.vehiculosRegistradosPorMatricula(matricula);
 		if(!registroEntradas.isEmpty()) {
 			RegistroEntrada registroEntrada = registroEntradas.get(0);
 			RegistroSalida registroSalida = calcularTotal(registroEntrada,fechaSalida);

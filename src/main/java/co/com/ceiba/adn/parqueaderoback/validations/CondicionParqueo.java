@@ -35,7 +35,7 @@ public abstract class CondicionParqueo
 	}
 	
 	private Boolean validarParqueoExistente() {
-		List<RegistroEntrada> entradas = registroEntrada.vehiculosRegistradosMatricula(vehiculo.getMatricula());
+		List<RegistroEntrada> entradas = registroEntrada.vehiculosRegistradosPorMatricula(vehiculo.getMatricula());
 		return !entradas.isEmpty();
 	}
 	

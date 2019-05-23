@@ -42,12 +42,12 @@ public class ParqueaderoBackApplication implements CommandLineRunner{
 	}
 	
 	private void getRegistrados() {
-		List<RegistroEntrada> registrados = registroEntradaService.vehiculosRegistrados();
+		List<RegistroEntrada> registrados = registroEntradaService.obtenerParqueosActivos();
 		registrados.forEach(System.out::println);
 	}
 	
 	private void getVehiculosporMatricula() {
-		List<RegistroEntrada> registrados = registroEntradaService.vehiculosRegistradosMatricula("jlo125");
+		List<RegistroEntrada> registrados = registroEntradaService.vehiculosRegistradosPorMatricula("jlo125");
 		registrados.forEach(System.out::println);
 	}
 
